@@ -10,38 +10,66 @@ const bootSequence = [
     "Access Granted."
 ];
 export default function Loader({ onComplete }) {
-    const [progress, setProgress] = useState(0);
+    const [logs, setLogs] = useState([]);
+    const [currentLine, setCurrentLine] = useState(0);
+    const [currentText, setCurrentText] = useState("");
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress((prev) => {
-                if (prev >= 100) {
-                    clearInterval(interval);
-                    onComplete();
-                    return 100;
-                }
-                const nextProgress = prev + 1;
 
-                const logIndex = Math.floor(nextProgress / 15);
+        if (currentLine >= bootSequence.length) {
 
-                // if (
-                //     logIndex < bootSequence.length &&
-                //     message === bootSequence[logIndex - 1]
-                // ) {
-                //     setMessage(bootSequence[logIndex]);
-                // }
+            setTimeout(() => {
 
-                return nextProgress;
-                // return prev + 1;
-            });
-        }, 100);
+                onComplete();
 
-        return () => clearInterval(interval);
-    }, []);
+            },300);
+
+            return;
+
+        }
+
+        const fullText = bootSequence[currentLine];
+
+        let index = 0;
+
+        const typing = setInterval(() => {
+
+            index++;
+
+            setCurrentText(fullText.slice(0,index));
+
+            if(index === fullText.length){
+
+                clearInterval(typing);
+
+                setTimeout(()=>{
+
+                    setLogs((prev)=>[
+
+                        ...prev,
+
+                        fullText
+
+                    ]);
+
+                    setCurrentText("");
+
+                    setCurrentLine((prev)=>prev+1);
+
+                },500);
+
+            }
+
+        },50);
+
+        return ()=>clearInterval(typing);
+
+    },[currentLine]);
 
     return (
-        <div className="w-[700px] rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
+    <div className="fixed inset-0 bg-black flex items-center justify-center">
 
+        <div className="w-[750px] max-w-[90%] rounded-xl overflow-hidden border border-green-500/20 shadow-2xl shadow-green-500/10">
             <div className="bg-zinc-900 px-4 py-2 border-b border-green-500/20 flex justify-between">
 
                 <span className="text-sm text-green-400 font-mono">
@@ -57,18 +85,34 @@ export default function Loader({ onComplete }) {
             <div className="bg-black p-6 min-h-[350px]">
 
                 {/* Terminal logs go here */}
-                <div className="mt-6 text-left font-mono text-green-400 space-y-2">
-                    {bootSequence.slice(0, Math.floor(progress / 15) + 1).map((log, index) => (
+                <div className="bg-black p-6 min-h-[350px] font-mono text-green-400">
+
+                    {logs.map((log,index)=>(
+
                         <p key={index}>
                             &gt; {log}
                         </p>
+
                     ))}
 
-                    <span className="animate-pulse">█</span>
+                    {currentLine < bootSequence.length && (
+
+                        <p>
+
+                            &gt; {currentText}
+
+                            <span className="animate-pulse">█</span>
+
+                        </p>
+
+                    )}
+
                 </div>
 
             </div>
 
         </div>
-    );
+
+    </div>
+);
 }

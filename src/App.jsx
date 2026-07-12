@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Loader from "./components/loader/Loader";
+import Elevator from "./components/elevator/Elevator";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -13,23 +14,34 @@ import Contact from "./sections/Contact/Contact";
 
 function App() {
 
-    const [loading, setLoading] = useState(true);
+  const [stage, setStage] = useState("loader");
 
+  return (
+      <>
+          {stage === "loader" && (
+              <Loader
+                  onComplete={() => setStage("elevator")}
+              />
+          )}
 
-    if (loading) {
-        return <Loader onComplete={() => setLoading(false)} />;
-    }
+          {stage === "elevator" && (
+              <Elevator
+                  onComplete={() => setStage("hero")}
+              />
+          )}
 
-    return (
-        <MainLayout>
-            <Intro />
-            <Hero />
-            <About />
-            <Projects />
-            <Journey />
-            <Contact />
-        </MainLayout>
-    );
+          {stage === "hero" && (
+              <MainLayout>
+                  <Intro />
+                  <Hero />
+                  <About />
+                  <Projects />
+                  <Journey />
+                  <Contact />
+              </MainLayout>
+          )}
+      </>
+  );
 }
 
 export default App;
