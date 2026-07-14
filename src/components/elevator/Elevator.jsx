@@ -19,7 +19,9 @@ export default function Elevator({ onComplete }) {
             <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
             <div className="absolute top-12 left-1/2 -translate-x-1/2 text-zinc-400 font-mono tracking-[8px] text-xl">
 
-                KATMAN
+                WELCOME 
+                TO THE WORLD 
+                OF KATMAN
 
             </div>
             <div className="
