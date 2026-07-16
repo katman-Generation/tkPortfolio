@@ -18,6 +18,7 @@ import {
   SiTailwindcss,
   SiJavascript,
 } from "react-icons/si";
+import { TbSql } from "react-icons/tb";
 
 export const skillCategories = [
   {
@@ -28,7 +29,7 @@ export const skillCategories = [
       { name: "Java", icon: FaJava },
       { name: "HTML", icon: FaHtml5 },
       { name: "CSS", icon: FaCss3Alt },
-      { name: "SQL", icon: Tbsql },
+      { name: "SQL", icon: TbSql },
     ],
   },
 

@@ -33,7 +33,7 @@ function App() {
 
           {stage === "hero" && (
               <MainLayout>
-                  <Intro />
+                  {/* <Intro /> */}
                   <Hero />
                   <About />
                   <Skills />
