@@ -1,33 +1,50 @@
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { useState } from "react";
 
-import Tunnel from "../../components/Stadium/Tunnel";
-import Stadium from "../../components/Stadium/Stadium";
+import Cube from "../../components/intro/Cube";
+import Narrative from "../../components/intro/Narrative";
+import Particles from "../../components/intro/Particles";
+import Space from "../../components/intro/Space";
+import { slides } from "../../components/intro/slides";
+
 
 export default function Intro() {
-    const world = useRef(null);
 
-    useEffect(() => {
-        gsap.fromTo(
-            world.current,{
-                scale:1,
-                y:150,
-            },{
-                scale:1.5,
-                y:0,
-                duration: 3,
-                ease: "power2.Out",
-                delay: 0.5
-            }
-        )
-    }, []);
+    const [currentSlide, setCurrentSlide] = useState(0);
+
 
     return (
-       <section className="relative h-screen overflow-hidden bg-black">
-            <div ref={world} className="absolute inset-0">
-                <Tunnel />
-                <Stadium />
-            </div>
-        </section> 
-    )
+
+        <section className="
+            relative
+            h-screen
+            overflow-hidden
+            bg-gradient-to-br from-black via-zinc-950 to-black
+        ">
+          <div className="
+              absolute
+              left-1/4
+              top-1/2
+              h-[500px]
+              w-[500px]
+              -translate-y-1/2
+              rounded-full
+              bg-blue-500/10
+              blur-[120px]
+          "/>
+
+            <Space />
+            <Particles />
+
+            <Cube 
+                setCurrentSlide={setCurrentSlide}
+            />
+
+
+            <Narrative
+                slide={slides[currentSlide]}
+            />
+
+        </section>
+
+    );
 }

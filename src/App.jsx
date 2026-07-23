@@ -15,33 +15,47 @@ import Skills from "./sections/skills/Skills";
 
 function App() {
 
-  const [stage, setStage] = useState("loader");
+  const [stage, setStage] = useState("hero");
+  const [transitioning, setTransitioning] = useState(false);
 
   return (
       <>
-          {stage === "loader" && (
-              <Loader
-                  onComplete={() => setStage("elevator")}
-              />
-          )}
+          <div className={`
+                transition-opacity
+                duration-1000
+                ${transitioning ? "opacity-0" : "opacity-100"}
+            `}>
+                {stage === "loader" && (
+                 <Loader
+                        onComplete={() => {
+                            setTransitioning(true);
 
-          {stage === "elevator" && (
-              <Elevator
-                  onComplete={() => setStage("hero")}
-              />
-          )}
+                            setTimeout(() => {
+                                setStage("elevator");
+                                setTransitioning(false);
+                            }, 1000);
+                        }}
+                    />
+            )}
 
-          {stage === "hero" && (
-              <MainLayout>
-                  {/* <Intro /> */}
-                  <Hero />
-                  <About />
-                  <Skills />
-                  <Projects />
-                  <Journey />
-                  <Contact />
-              </MainLayout>
-          )}
+            {stage === "elevator" && (
+                <Elevator
+                    onComplete={() => setStage("hero")}
+                />
+            )} 
+
+            {stage === "hero" && (
+                <MainLayout>
+                    <Intro />
+                    <Hero />
+                    <About />
+                    <Skills />
+                    <Projects />
+                    <Journey />
+                    <Contact />
+                </MainLayout>
+            )}
+          </div>
       </>
   );
 }

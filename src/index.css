@@ -14,3 +14,6 @@ body {
 * {
     box-sizing: border-box;
 }
+.backface-hidden {
+    backface-visibility: hidden;
+}

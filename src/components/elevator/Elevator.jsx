@@ -1,6 +1,67 @@
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+
+import { Canvas } from "@react-three/fiber";
+import { Text3D, Center, Environment, Float } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+
 import chelsea from "../../assets/ChelseaFC.jpeg";
+
+function Katman3DText() {
+
+    const titleRef = useRef();
+
+    useFrame((state) => {
+
+        if (!titleRef.current) return;
+
+        const t = Math.min(state.clock.getElapsedTime() / 3.8, 1);
+
+        // Grow
+        const scale = 0.08 + (1 - 0.08) * t;
+        titleRef.current.scale.set(scale, scale, scale);
+
+        // Rotate into place
+        titleRef.current.rotation.y = -1 + (0 * t);
+        titleRef.current.rotation.x = 0.5 * (1 - t);
+
+    });
+
+    return (
+        <group ref={titleRef}>
+
+            <Center>
+
+                <Text3D
+                    font="/fonts/helvetiker_bold.typeface.json"
+                    size={0.8}
+                    height={0.18}
+                    bevelEnabled
+                    bevelThickness={0.03}
+                    bevelSize={0.02}
+                    bevelSegments={5}
+                >
+
+                    WELCOME
+                    {"\n"}
+                    TO THE WORLD
+                    {"\n"}
+                    OF KATMAN
+
+                    <meshStandardMaterial
+                        color="white"
+                        metalness={1}
+                        roughness={0.15}
+                    />
+
+                </Text3D>
+
+            </Center>
+
+        </group>
+    );
+}
 
 export default function Elevator({ onComplete }) {
 
@@ -59,133 +120,63 @@ export default function Elevator({ onComplete }) {
             {/* Ceiling Light */}
             <div className="absolute top-10 left-1/2 -translate-x-1/2 w-40 h-2 bg-yellow-300 blur-md opacity-70"></div>
             <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
+            {/* REAL 3D TEXT */}
+
             <motion.div
-                className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
                 initial={{
-                    opacity: 0,
+                    opacity:0
                 }}
                 animate={{
-                    opacity: 1,
+                    opacity:1
                 }}
                 transition={{
-                    delay: 2.3,
-                    duration: 0.5,
+                    delay:2.5,
+                    duration:1
                 }}
+                className="
+                absolute
+                inset-0
+                z-20
+                pointer-events-none
+                "
             >
-                <motion.div
-                    initial={{
-                        scale: 0.08,
-                        rotateX: 70,
-                        rotateY: -35,
-                        y: 120,
-                        filter: "blur(18px)",
+
+                <Canvas
+                    camera={{
+                        position:[0,0,6],
+                        fov:45
                     }}
-                    animate={{
-                        scale: 1,
-                        rotateX: 0,
-                        rotateY: 0,
-                        y: 0,
-                        filter: "blur(0px)",
-                    }}
-                    transition={{
-                        duration: 3,
-                        delay: 2.3,
-                        ease: [0.16, 1, 0.3, 1],
-                    }}
-                    style={{
-                        transformStyle: "preserve-3d",
-                        perspective: "1800px",
-                    }}
-                    className="relative"
                 >
 
-                    {/* Blue glow */}
+                    <ambientLight intensity={0.6}/>
 
-                    <motion.div
-                        initial={{
-                            scale: 0,
-                            opacity: 0,
-                        }}
-                        animate={{
-                            scale: 1.8,
-                            opacity: 1,
-                        }}
-                        transition={{
-                            delay: 2.3,
-                            duration: 3,
-                        }}
-                        className="
-                        absolute
-                        left-1/2
-                        top-1/2
-                        -translate-x-1/2
-                        -translate-y-1/2
-                        w-[700px]
-                        h-[700px]
-                        rounded-full
-                        bg-blue-500/40
-                        blur-[180px]
-                        "
+
+                    <directionalLight
+                        position={[5,5,5]}
+                        intensity={4}
+                    />
+                    <directionalLight
+                        position={[-5, 2, 2]}
+                        intensity={2}
+                        color="#60a5fa"
                     />
 
-                    <h1
-                        className="
-                        relative
-                        text-center
-                        uppercase
-                        font-black
-                        text-white
-                        tracking-[16px]
-                        leading-tight
-                        text-5xl
-                        md:text-8xl
-                        "
-                        style={{
-                            transform:
-                                "perspective(1800px) rotateX(18deg) rotateY(-12deg)",
-                            textShadow: `
-                            0 2px 0 #dbeafe,
-                            0 6px 10px rgba(0,0,0,.5),
-                            0 0 25px rgba(96,165,250,.8),
-                            0 0 70px rgba(59,130,246,.8),
-                            0 0 130px rgba(37,99,235,.7)
-                            `,
-                        }}
-                    >
-                        WELCOME
-                        <br />
-                        TO THE WORLD
-                        <br />
-                        OF KATMAN
-                    </h1>
-
-                    {/* Shine */}
-
-                    <motion.div
-                        initial={{
-                            x: "-220%",
-                        }}
-                        animate={{
-                            x: "260%",
-                        }}
-                        transition={{
-                            delay: 4.6,
-                            duration: 1.5,
-                            ease: "linear",
-                        }}
-                        className="
-                        absolute
-                        top-0
-                        left-0
-                        h-full
-                        w-36
-                        rotate-12
-                        bg-white/50
-                        blur-2xl
-                        "
+                    <pointLight
+                        position={[0, 0, 3]}
+                        intensity={8}
+                        color="#ffffff"
                     />
 
-                </motion.div>
+
+                    <Katman3DText />
+
+
+                    <Environment preset="city"/>
+
+
+                </Canvas>
+
+
             </motion.div>
             <div className="
                 absolute
