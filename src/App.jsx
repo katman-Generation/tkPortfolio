@@ -13,7 +13,7 @@ import Contact from "./sections/Contact/Contact";
 
 function App() {
 
-  const [stage, setStage] = useState("hero");
+  const [stage, setStage] = useState("loader");
   const [transitioning, setTransitioning] = useState(false);
 
   return (
