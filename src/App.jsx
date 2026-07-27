@@ -4,14 +4,12 @@ import Loader from "./components/loader/Loader";
 import Elevator from "./components/elevator/Elevator";
 
 import MainLayout from "./layouts/MainLayout";
-
 import Intro from "./sections/Intro/Intro";
 import Hero from "./sections/Hero/Hero";
 import About from "./sections/About/About";
-import Projects from "./sections/Projects/Projects";
-import Journey from "./sections/Journey/Journey";
+import BuildingBlocks from "./sections/BuildingBlocks/BuildingBlocks";
 import Contact from "./sections/Contact/Contact";
-import Skills from "./sections/skills/Skills";
+
 
 function App() {
 
@@ -49,9 +47,7 @@ function App() {
                     <Intro />
                     <Hero />
                     <About />
-                    <Skills />
-                    <Projects />
-                    <Journey />
+                    <BuildingBlocks/>
                     <Contact />
                 </MainLayout>
             )}
