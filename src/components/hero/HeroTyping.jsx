@@ -8,7 +8,7 @@ const words = [
 ];
 
 const finalMessage =
-  "I build scalable software, create digital experiences, and use technology to solve real-world problems while building KatmanHub into a world-class technology company.";
+  "For me, programming has never been just about writing code. It's a way to solve meaningful problems, express creativity, and turn ideas into experiences that people can use, enjoy, and remember.";
 
 export default function HeroTyping() {
   const [text, setText] = useState("");
