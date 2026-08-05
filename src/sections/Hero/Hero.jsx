@@ -33,7 +33,7 @@ export default function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center justify-between gap-20 px-8">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col-reverse items-center justify-center gap-12 px-6 px-6 py-24 lg:flex-row lg:justify-between lg:gap-20 lg:px-8">
 
         {/* LEFT */}
         <motion.div
@@ -41,13 +41,13 @@ export default function Hero() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="max-w-xl flex-1"
+          className="max-w-xl flex-1 text-center lg:text-left"
         >
           <p className="mb-4 text-lg font-medium tracking-widest text-cyan-400 uppercase">
             Welcome
           </p>
 
-          <h1 className="text-6xl font-black leading-none text-white xl:text-7xl">
+          <h1 className="text-5xl font-black leading-none text-white sm:text-6xl xl:text-7xl">
             Tatenda
             <br />
             Katema
@@ -57,7 +57,17 @@ export default function Hero() {
             <HeroTyping />
           </div>
 
-          <div className="mt-12 flex gap-5">
+          <div
+            className="
+            mt-10
+            flex
+            flex-col
+            gap-4
+            sm:flex-row
+            sm:justify-center
+            lg:justify-start
+            "
+          >
 
             <button
               className="
@@ -105,7 +115,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="flex flex-1 justify-center"
+          className="flex flex-1 justify-center mb-8 lg:mb-0"
         >
           <TechRing />
         </motion.div>

@@ -1,21 +1,6 @@
 import { useState,useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-import {
-  FaReact,
-  FaPython,
-  FaGitAlt,
-  FaLinux,
-  FaHtml5,
-  FaCss3Alt,
-} from "react-icons/fa";
-
-import {
-  SiDjango,
-  SiJavascript,
-  SiTailwindcss,
-  SiPostgresql,
-} from "react-icons/si";
 import my from "../../assets/my.jpg";
 import { technologies } from "../../data/technologies";
 
@@ -24,6 +9,16 @@ export default function TechRing() {
   const ringRef = useRef(null);
   const [activeTech, setActiveTech] = useState(technologies[0]);
   const [hoveredTech, setHoveredTech] = useState(null);
+  const ringSize =
+    window.innerWidth < 640
+      ? 340
+      : window.innerWidth < 1024
+      ? 420
+      : 560;
+
+  const radius = ringSize / 2 - 32;
+  const iconSize = ringSize * 0.055;
+  const orbitButton = ringSize * 0.115;
 
   useEffect(() => {
 
@@ -57,7 +52,7 @@ export default function TechRing() {
     }, []);
 
   return (
-    <div className="relative h-[560px] w-[560px]">
+    <div className="relative h-[340px] w-[340px] sm:h-[420px] sm:w-[420px] lg:h-[560px] lg:w-[560px]">
 
       {/* Background Glow */}
       <div className="absolute inset-0 rounded-full bg-cyan-500/5 blur-3xl" />
@@ -75,6 +70,7 @@ export default function TechRing() {
       <div
         ref={ringRef}
         className="absolute inset-0"
+        style={{ transformOrigin: "50% 50%" }}
       >
         {technologies.map((tech, index) => {
           const angle = (360 / technologies.length) * index;
@@ -86,9 +82,8 @@ export default function TechRing() {
               style={{
                 transform: `
                   rotate(${angle}deg)
-                  translateY(-240px)
+                  translateY(-${radius}px)
                 `,
-                transformOrigin: "center center",
               }}
             >
               <div
@@ -96,8 +91,6 @@ export default function TechRing() {
                 onMouseLeave={() => setHoveredTech(null)}
                 className="
                 flex
-                h-16
-                w-16
                 -translate-x-1/2
                 -translate-y-1/2
                 items-center
@@ -115,9 +108,13 @@ export default function TechRing() {
                 hover:scale-125
                 hover:border-cyan-400
                 "
+                style={{
+                  width: orbitButton,
+                  height: orbitButton,
+                }}
               >
                 <tech.icon
-                  size={30}
+                  size={iconSize}
                   color={tech.color}
                 />
               </div>
@@ -130,25 +127,35 @@ export default function TechRing() {
       <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
       <div
         className="
-            absolute
-            left-1/2
-            top-6
-            -translate-x-1/2
-            w-72
-            rounded-2xl
-            border
-            border-cyan-400/20
-            bg-slate-900/95
-            p-5
-            text-white
-            shadow-2xl
-            backdrop-blur-xl
-            transition-all
-            duration-300
-        "
+          absolute
+          left-1/2
+          top-0
+          sm:top-2
+          lg:top-6
+          w-[240px]
+          sm:w-[280px]
+          lg:w-72
+          -translate-x-1/2
+          rounded-2xl
+          border
+          border-cyan-400/20
+          bg-slate-900/95
+          p-3
+          sm:p-4
+          lg:p-5
+          text-white
+          shadow-2xl
+          backdrop-blur-xl
+          transition-all
+          duration-300
+          "
+          style={{
+            transform: "translate(-50%, -35px)"
+          }}
+          
         >
         <h3
-            className="text-xl font-bold"
+            className="text-lg sm:text-xl font-bold"
             style={{
             color: (hoveredTech || activeTech).color,
             }}
@@ -156,7 +163,7 @@ export default function TechRing() {
             {(hoveredTech || activeTech).name}
         </h3>
 
-        <div className="mt-4 space-y-2 text-sm">
+        <div className="mt-4 space-y-2 text-xs sm:text-sm">
 
             <p>
             🚀 Built <strong>{(hoveredTech || activeTech).projects}</strong> Projects
@@ -199,8 +206,12 @@ export default function TechRing() {
         absolute
         left-1/2
         top-1/2
-        h-64
-        w-64
+        h-44
+        w-44
+        sm:h-56
+        sm:w-56
+        lg:h-64
+        lg:w-64
         -translate-x-1/2
         -translate-y-1/2
         overflow-hidden

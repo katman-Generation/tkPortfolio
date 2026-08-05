@@ -54,16 +54,16 @@ export default function HeroTyping() {
   }, [text, isDeleting, wordIndex, finished]);
 
   return (
-    <div className="min-h-[170px]">
+    <div className="min-h-[180px] sm:min-h-[170px]">
 
-      <h2 className="text-3xl font-semibold text-cyan-400">
+      <h2 className="text-2xl font-semibold text-cyan-400 sm:text-3xl">
         {finished ? "Software Engineer" : text}
 
         <span className="ml-1 animate-pulse">|</span>
       </h2>
 
       <p
-        className={`mt-6 text-lg leading-8 text-slate-400 transition-all duration-700 ${
+        className={`mt-6 text-lg leading-7 text-slate-400 sm:text-lg sm:leading-8 transition-all duration-700 ${
           finished
             ? "translate-y-0 opacity-100"
             : "translate-y-5 opacity-0"

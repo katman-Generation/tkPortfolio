@@ -1,19 +1,30 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import BookCover from "./BookCover";
 import InsideCover from "./InsideCover";
 import Spine from "./Spine";
 import BookPage from "./BookPage";
+import MobileBook from "./MobileBook";
 
 import { pages } from "./TimeLineData";
-
 
 export default function Book() {
 
   const [opened,setOpened] = useState(false);
   const [currentPage,setCurrentPage] = useState(-1);
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+
+    check();
+    window.addEventListener("resize", check);
+
+    return () => {
+      window.removeEventListener("resize", check);
+    };
+  }, []);
 
   const openBook = () => {
     setOpened(true);
@@ -36,6 +47,9 @@ export default function Book() {
     }
 
   };
+  if (isMobile) {
+    return <MobileBook />;
+  }
 
 
 return (
@@ -47,8 +61,13 @@ relative
 flex
 items-center
 justify-center
-h-screen
+min-h-screen
+w-full
 bg-slate-900
+overflow-hidden
+px-4
+sm:px-6
+lg:px-0
 "
 
 style={{
@@ -57,28 +76,25 @@ perspective:"2500px"
 
 >
 
-
 <motion.div
+  className="
+    relative
+    w-full
+    max-w-[850px]
+    aspect-[850/560]
+  "
+  style={{
+    transformStyle: "preserve-3d"
+  }}
 
-className="
-relative
-w-[850px]
-h-[560px]
-"
+  animate={{
+    x: opened ? 110 : 0,
+  }}
 
-animate={{
-x: opened ? 110 : 0
-}}
-
-transition={{
-duration:1.8,
-ease:[0.22,1,0.36,1]
-}}
-
-style={{
-transformStyle:"preserve-3d"
-}}
-
+  transition={{
+    duration:1.8,
+    ease:[0.22,1,0.36,1]
+  }}
 >
 
 
@@ -95,10 +111,9 @@ className="
 absolute
 left-0
 top-0
-w-1/2
 h-full
+w-1/2
 "
-
 style={{
 transformStyle:"preserve-3d"
 }}
@@ -108,7 +123,7 @@ transformStyle:"preserve-3d"
 
 {
 opened && currentPage === -1 && (
-<InsideCover />
+<InsideCover isMobile={isMobile} />
 )
 }
 
@@ -124,6 +139,8 @@ opened && currentPage === -1 && (
 pages.map((page,index)=>(
 
 <BookPage
+
+isMobile={isMobile}
 
 key={page.id}
 
@@ -154,6 +171,8 @@ opened={opened}
 
 onOpen={openBook}
 
+isMobile={isMobile}
+
 />
 
 
@@ -172,14 +191,22 @@ opened && (
 
 className="
 absolute
-bottom-10
+bottom-4
+sm:bottom-8
 left-0
 w-full
 flex
-justify-between
-px-20
+flex-col
+items-center
+gap-2
+sm:flex-row
+sm:justify-between
+px-4
+sm:px-10
+lg:px-20
+text-[11px]
 text-gray-400
-text-sm
+sm:text-sm
 "
 
 >
