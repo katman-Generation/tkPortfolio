@@ -101,7 +101,6 @@ export default function Cube({ setCurrentSlide }) {
                     }}
                     onPointerDown={() => timeLine.current?.pause()}
                     onPointerUp={() => {
-                        console.log("pointer up");
                         timeLine.current?.resume();
                     }}
                     onPointerLeave={() => {
