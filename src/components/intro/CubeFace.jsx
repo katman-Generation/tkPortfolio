@@ -9,7 +9,7 @@ export default function CubeFace({ className, image }) {
                 rounded-3xl
                 border border-white/20
                 shadow-[0_20px_80px_rgba(0,0,0,0.6)]
-                backface-hidden
+                
                 ${className}
             `}
         >

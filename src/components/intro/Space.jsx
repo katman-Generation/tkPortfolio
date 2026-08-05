@@ -9,10 +9,14 @@ export default function Space(){
             <div
                 className="
                 absolute
-                right-24
-                top-24
-                h-40
-                w-40
+                right-10
+                top-10
+                h-32
+                w-32
+                lg:right-24
+                lg:top-24
+                lg:h-40
+                lg:w-40
                 overflow-hidden
                 rounded-full
                 bg-zinc-200

@@ -31,20 +31,22 @@ export default function Narrative({slide}) {
         <div
             ref={text}
             className="
-            absolute
-            right-24
-            top-1/2
-            -translate-y-1/2
-            max-w-md
+            relative
+            z-10
+            w-full
+            max-w-sm
+            lg:max-w-md
+            text-center
             text-white
+            lg:text-left
             "
         >
 
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                 {slide.title}
             </h1>
 
-            <p className="mt-5 text-xl text-white/70">
+            <p className="mt-5 text-base sm:text-lg lg:text-xl text-white/70">
                 {slide.text}
             </p>
 

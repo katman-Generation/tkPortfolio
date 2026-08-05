@@ -14,12 +14,19 @@ export default function Intro() {
 
     return (
 
-        <section className="
+        <section
+            className="
             relative
-            h-screen
+            min-h-screen
             overflow-hidden
-            bg-gradient-to-br from-black via-zinc-950 to-black
-        ">
+            bg-gradient-to-br
+            from-black
+            via-zinc-950
+            to-black
+            px-6
+            lg:px-12
+            "
+        >
           <div className="
               absolute
               left-1/4
@@ -31,18 +38,60 @@ export default function Intro() {
               bg-blue-500/10
               blur-[120px]
           "/>
+          <nav
+                className="
+                absolute
+                top-6
+                left-1/2
+                z-20
+                flex
+                -translate-x-1/2
+                gap-6
+                rounded-full
+                border
+                border-white/10
+                bg-white/5
+                px-6
+                py-3
+                backdrop-blur-md
+                text-xs
+                uppercase
+                tracking-[0.3em]
+                text-white/70
+                "
+            >
+                <span className="text-blue-400">My Story</span>
+                <span>Building Blocks</span>
+                <span>Contact</span>
+            </nav>
 
             <Space />
             <Particles />
 
-            <Cube 
-                setCurrentSlide={setCurrentSlide}
-            />
+            <div
+                className="
+                relative
+                z-10
+                flex
+                min-h-screen
+                flex-col
+                items-center
+                justify-center
+                gap-6
+                pt-28
+                lg:flex-row
+                lg:gap-10
+                lg:justify-between
+                "
+            >
+                <Cube
+                    setCurrentSlide={setCurrentSlide}
+                />
 
-
-            <Narrative
-                slide={slides[currentSlide]}
-            />
+                <Narrative
+                    slide={slides[currentSlide]}
+                />
+            </div>
 
         </section>
 

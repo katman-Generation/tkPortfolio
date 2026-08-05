@@ -19,16 +19,30 @@ function Katman3DText() {
         const t = Math.min(state.clock.getElapsedTime() / 3.8, 1);
 
         // Grow
-        const scale = 0.08 + (1 - 0.08) * t;
-        titleRef.current.scale.set(scale, scale, scale);
+        const mobile = window.innerWidth < 768;
 
-        // Rotate into place
-        titleRef.current.rotation.y = -1 + (0 * t);
-        titleRef.current.rotation.x = 0.5 * (1 - t);
+        const finalScale = mobile ? 0.35 : 0.65;
+
+        const scale = 0.05 + (finalScale * t);
+
+        titleRef.current.scale.set(
+            scale,
+            scale,
+            scale
+        );
+
+
+        // Start tilted then face user
+        titleRef.current.rotation.y = -1 + (1 * t);
+
+        // straighten vertical tilt
+        titleRef.current.rotation.x = 0.5 - (0.5 * t);
 
     });
 
+
     return (
+
         <group ref={titleRef}>
 
             <Center>
@@ -49,15 +63,18 @@ function Katman3DText() {
                     {"\n"}
                     OF KATMAN
 
+
                     <meshStandardMaterial
                         color="white"
                         metalness={1}
                         roughness={0.15}
                     />
 
+
                 </Text3D>
 
             </Center>
+
 
         </group>
     );
@@ -119,7 +136,7 @@ export default function Elevator({ onComplete }) {
             />
             {/* Ceiling Light */}
             <div className="absolute top-10 left-1/2 -translate-x-1/2 w-40 h-2 bg-yellow-300 blur-md opacity-70"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-950 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-zinc-950/40 to-black/70" />
             {/* REAL 3D TEXT */}
 
             <motion.div
@@ -143,8 +160,8 @@ export default function Elevator({ onComplete }) {
 
                 <Canvas
                     camera={{
-                        position:[0,0,6],
-                        fov:45
+                        position:[0,0,7],
+                        fov:50
                     }}
                 >
 
