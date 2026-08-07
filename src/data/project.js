@@ -1,273 +1,368 @@
+import portfolio from "../assets/intro/portfolio.png";
+import zoey from "../assets/intro/zoey.png";
+import rentspace from "../assets/intro/Rentspace.png";
+import katmanhub from "../assets/intro/KatmanHub.png";
+import f10 from "../assets/intro/f10.png";
+import zimbuzz from "../assets/intro/ZimBuzz.png";
+import history from "../assets/intro/Egallery.png";
+import diesel from "../assets/intro/Diesel.png";
+
+
 export const projects = [
   {
     id: 1,
-
-    title: "Zoey China Agent",
-
-    category: "Full Stack Web Application",
-
-    year: "2025",
-
-    image: "/projects/zoey.png",
-
-    color: "#3B82F6",
+    title: "Personal Portfolio",
+    category: "Interactive Developer Portfolio",
+    year: "2026",
+    image: portfolio,
+    color: "#06B6D4",
 
     overview:
-      "Zoey China Agent is a sourcing platform that streamlines the quotation process for customers importing products from China. It centralizes communication, quotation requests, and supplier management into one easy-to-use application.",
+      "A cinematic portfolio that tells my story through immersive interactions instead of a traditional developer website.",
 
     challenge:
-      "Businesses relied on WhatsApp conversations, emails and spreadsheets to request quotations. This resulted in poor organization, duplicated information and slow response times.",
+      "I wanted a portfolio that would be remembered, not just another page listing projects and technologies.",
 
     solution:
-      "I designed and developed a complete quotation management system with secure authentication, structured workflows and an intuitive dashboard that simplifies the sourcing process.",
-
-    technologies: [
-      {
-        name: "Django",
-        contribution:
-          "Built the complete backend, authentication system, models, business logic and admin dashboard."
-      },
-      {
-        name: "HTMX",
-        contribution:
-          "Created dynamic interfaces with partial page updates without relying on a heavy frontend framework."
-      },
-      {
-        name: "PostgreSQL",
-        contribution:
-          "Designed the relational database and optimized quotation and customer management."
-      },
-      {
-        name: "Tailwind CSS",
-        contribution:
-          "Designed a responsive and modern interface with reusable UI components."
-      }
-    ],
-
-    features: [
-      "Customer quotation requests",
-      "Supplier management",
-      "Authentication",
-      "Admin dashboard",
-      "Responsive design"
-    ],
-
-    github: "https://github.com/yourusername/zoey-china-agent",
-
-    live: "https://your-demo-link.com"
-  },
-
-  {
-    id: 2,
-
-    title: "Diesel Calculator",
-
-    category: "Business Automation Tool",
-
-    year: "2024",
-
-    image: "/projects/diesel.png",
-
-    color: "#F59E0B",
-
-    overview:
-      "A business tool that automates diesel consumption calculations, helping transport businesses estimate fuel costs quickly and accurately.",
-
-    challenge:
-      "Manual fuel calculations consumed time and often produced inaccurate estimates.",
-
-    solution:
-      "Developed an automated calculator that instantly computes diesel usage and operational costs from user input.",
-
-    technologies: [
-      {
-        name: "Python",
-        contribution:
-          "Implemented all mathematical calculations and fuel consumption formulas."
-      },
-      {
-        name: "Django",
-        contribution:
-          "Built the application structure, forms and backend logic."
-      },
-      {
-        name: "JavaScript",
-        contribution:
-          "Provided instant calculations and improved user interaction."
-      }
-    ],
-
-    features: [
-      "Fuel calculations",
-      "Cost estimation",
-      "Instant results",
-      "Business reports"
-    ],
-
-    github: "",
-
-    live: ""
-  },
-
-  {
-    id: 3,
-
-    title: "E-Gallery",
-
-    category: "Web Application",
-
-    year: "2023",
-
-    image: "/projects/gallery.png",
-
-    color: "#8B5CF6",
-
-    overview:
-      "An online platform where artists can upload, organize and showcase their artwork professionally.",
-
-    challenge:
-      "Many artists lacked an affordable platform to present their work online.",
-
-    solution:
-      "Built a gallery management system with image uploads, categories and a clean browsing experience.",
-
-    technologies: [
-      {
-        name: "Django",
-        contribution:
-          "Managed users, artwork uploads and backend functionality."
-      },
-      {
-        name: "SQLite",
-        contribution:
-          "Stored artwork and user information."
-      },
-      {
-        name: "HTML & CSS",
-        contribution:
-          "Created the responsive gallery interface."
-      }
-    ],
-
-    features: [
-      "Artwork uploads",
-      "Categories",
-      "Responsive layout",
-      "Artist profiles"
-    ],
-
-    github: "",
-
-    live: ""
-  },
-
-  {
-    id: 4,
-
-    title: "F10 Education Platform",
-
-    category: "Educational Platform",
-
-    year: "2025",
-
-    image: "/projects/f10.png",
-
-    color: "#10B981",
-
-    overview:
-      "A modern learning platform designed to deliver educational videos and structured learning materials.",
-
-    challenge:
-      "Students needed a centralized platform to access educational resources from anywhere.",
-
-    solution:
-      "Built a scalable platform with a React frontend and Django REST API backend.",
+      "Built a highly interactive experience featuring a football-inspired hero, 3D storybook, animated sections, and smooth scrolling effects.",
 
     technologies: [
       {
         name: "React",
-        contribution:
-          "Built reusable components and managed the frontend interface."
+        contribution: "Built the application using reusable components and modern React architecture."
       },
       {
-        name: "Django REST Framework",
-        contribution:
-          "Developed APIs connecting the frontend with backend services."
+        name: "GSAP",
+        contribution: "Created cinematic scroll animations, pinned sections and interactive transitions."
       },
       {
-        name: "Django",
-        contribution:
-          "Handled authentication and application logic."
+        name: "Framer Motion",
+        contribution: "Implemented smooth animations throughout the user experience."
+      },
+      {
+        name: "React Three Fiber",
+        contribution: "Built the interactive 3D book and 3D text experiences."
+      },
+      {
+        name: "Tailwind CSS",
+        contribution: "Designed a fully responsive interface."
       }
     ],
 
     features: [
-      "Video streaming",
-      "Course organization",
+      "3D Story Book",
+      "Animated Hero",
+      "Horizontal Scroll",
+      "Responsive Design",
+      "Interactive UI"
+    ],
+
+    github: "",
+    live: "https://tk-portfolio-blush.vercel.app/"
+  },
+
+  {
+    id: 2,
+    title: "Zoey China Agent",
+    category: "Full Stack Web Application",
+    year: "2025",
+    image: zoey,
+    color: "#3B82F6",
+
+    overview:
+      "A sourcing platform that simplifies quotation requests between customers and suppliers importing products from China.",
+
+    challenge:
+      "Managing quotations through WhatsApp and spreadsheets made the process slow and difficult to track.",
+
+    solution:
+      "Built a centralized quotation management system with secure authentication and an admin dashboard.",
+
+    technologies: [
+      {
+        name: "Django",
+        contribution: "Developed the backend, authentication, business logic and admin panel."
+      },
+      {
+        name: "HTML",
+        contribution: "Built the application interface using Django templates."
+      },
+      {
+        name: "Tailwind CSS",
+        contribution: "Designed a clean and responsive user interface."
+      },
+      {
+        name: "PostgreSQL",
+        contribution: "Managed quotation, supplier and customer data."
+      }
+    ],
+
+    features: [
+      "Quotation Requests",
+      "Supplier Management",
+      "Authentication",
+      "Admin Dashboard"
+    ],
+
+    github: "",
+    live: "https://zoeychinaagent.onrender.com/"
+  },
+
+  {
+    id: 3,
+    title: "RentSpace",
+    category: "Property Rental Platform",
+    year: "2026",
+    image: rentspace,
+    color: "#F59E0B",
+
+    overview:
+      "A modern rental platform that connects property owners with tenants through an intuitive web application.",
+
+    challenge:
+      "Finding rental properties often involves scattered listings and outdated information.",
+
+    solution:
+      "Developed a full-stack platform where users can browse, upload and manage rental listings.",
+
+    technologies: [
+      {
+        name: "Django REST Framework",
+        contribution: "Developed the backend APIs and authentication."
+      },
+      {
+        name: "React",
+        contribution: "Built the interactive frontend."
+      },
+      {
+        name: "PostgreSQL",
+        contribution: "Stored users and property information."
+      },
+      {
+        name: "Tailwind CSS",
+        contribution: "Created the responsive interface."
+      }
+    ],
+
+    features: [
+      "Property Listings",
+      "Image Uploads",
       "Authentication",
       "REST API"
     ],
 
     github: "",
-
-    live: ""
+    live: "https://www.zimrentspace.com/"
   },
 
   {
-    id: 5,
-
-    title: "Personal Portfolio",
-
-    category: "Interactive Portfolio",
-
+    id: 4,
+    title: "KatmanHub",
+    category: "Business Website",
     year: "2026",
-
-    image: "/projects/portfolio.png",
-
-    color: "#06B6D4",
+    image: katmanhub,
+    color: "#8B5CF6",
 
     overview:
-      "A cinematic developer portfolio that tells my story through immersive interactions instead of traditional sections.",
+      "The official website for KatmanHub, showcasing the vision, services and future projects behind the brand.",
 
     challenge:
-      "Most developer portfolios look alike and focus on listing technologies rather than creating an engaging experience.",
+      "Create a modern online presence that reflects the company's ambition and creativity.",
 
     solution:
-      "Designed and built a highly interactive portfolio featuring animated transitions, a football-inspired hero section, a 3D storybook About section, and horizontally scrolling project case studies.",
+      "Built a responsive full-stack website with a Django backend and React frontend.",
 
     technologies: [
       {
         name: "React",
-        contribution:
-          "Built the application using reusable components and modern React architecture."
+        contribution: "Developed the frontend interface."
       },
       {
-        name: "GSAP",
-        contribution:
-          "Implemented cinematic scroll animations, pinned sections and horizontal scrolling."
-      },
-      {
-        name: "Framer Motion",
-        contribution:
-          "Created smooth entrance animations and interactive UI transitions."
+        name: "Django",
+        contribution: "Built backend services and content management."
       },
       {
         name: "Tailwind CSS",
-        contribution:
-          "Designed a fully responsive modern interface."
+        contribution: "Designed the responsive layout."
       }
     ],
 
     features: [
-      "3D book interaction",
-      "Animated hero",
-      "Horizontal scrolling projects",
-      "Responsive design",
-      "Modern UI"
+      "Responsive Design",
+      "Modern UI",
+      "Company Information",
+      "Dynamic Content"
     ],
 
     github: "",
+    live: "https://katman-frontend-iota.vercel.app/"
+  },
 
+  {
+    id: 5,
+    title: "F10 Learning Platform",
+    category: "Educational Platform",
+    year: "2026",
+    image: f10,
+    color: "#10B981",
+
+    overview:
+      "An upcoming learning platform designed to make educational content accessible from any device.",
+
+    challenge:
+      "Students need a simple platform to access learning materials in one place.",
+
+    solution:
+      "Building a responsive web platform focused on delivering structured educational content.",
+
+    technologies: [
+      {
+        name: "Django",
+        contribution: "Developing backend functionality and authentication."
+      },
+      {
+        name: "HTML",
+        contribution: "Building the user interface with Django templates."
+      },
+      {
+        name: "CSS",
+        contribution: "Creating a responsive design."
+      }
+    ],
+
+    features: [
+      "Course Pages",
+      "Authentication",
+      "Responsive Design",
+      "Learning Resources"
+    ],
+
+    github: "",
     live: ""
+  },
+
+  {
+    id: 6,
+    title: "ZimBuzz",
+    category: "Business Discovery Platform",
+    year: "In Progress",
+    image: zimbuzz,
+    color: "#EC4899",
+
+    overview:
+      "A community platform where businesses can showcase their services and customers can recommend work well done.",
+
+    challenge:
+      "Many small businesses struggle to gain visibility and trusted recommendations online.",
+
+    solution:
+      "Developing a modern platform that helps businesses build their reputation through community engagement.",
+
+    technologies: [
+      {
+        name: "React",
+        contribution: "Building the frontend."
+      },
+      {
+        name: "Django REST Framework",
+        contribution: "Developing backend APIs."
+      }
+    ],
+
+    features: [
+      "Business Profiles",
+      "Reviews",
+      "Recommendations",
+      "Search"
+    ],
+
+    github: "",
+    live: ""
+  },
+
+  {
+    id: 7,
+    title: "Your History",
+    category: "Digital Storytelling Platform",
+    year: "2024",
+    image: history,
+    color: "#6366F1",
+
+    overview:
+      "A web application built around one simple belief: we all deserve to be remembered.",
+
+    challenge:
+      "Personal stories and family history are often lost across generations.",
+
+    solution:
+      "Built a platform where people can preserve and share their stories for future generations.",
+
+    technologies: [
+      {
+        name: "Django",
+        contribution: "Built the backend and application logic."
+      },
+      {
+        name: "HTML",
+        contribution: "Developed the user interface."
+      },
+      {
+        name: "CSS",
+        contribution: "Designed the application layout."
+      }
+    ],
+
+    features: [
+      "Personal Stories",
+      "Timeline",
+      "Profiles",
+      "Responsive Design"
+    ],
+
+    github: "",
+    live: ""
+  },
+
+  {
+    id: 8,
+    title: "Diesel Calculator",
+    category: "Business Utility",
+    year: "2023",
+    image: diesel,
+    color: "#F97316",
+
+    overview:
+      "A browser-based application that helps truck drivers estimate diesel consumption based on trailer type, load status and distance travelled.",
+
+    challenge:
+      "Manual fuel calculations were slow and often inaccurate during trip planning.",
+
+    solution:
+      "Built a lightweight calculator that instantly estimates fuel usage using predefined consumption rates.",
+
+    technologies: [
+      {
+        name: "HTML",
+        contribution: "Built the application interface."
+      },
+      {
+        name: "CSS",
+        contribution: "Designed the responsive layout."
+      },
+      {
+        name: "JavaScript",
+        contribution: "Implemented the calculation logic."
+      }
+    ],
+
+    features: [
+      "Fuel Estimates",
+      "Trailer Selection",
+      "Distance Calculator",
+      "Instant Results"
+    ],
+
+    github: "https://github.com/katman-generation/CALCU_",
+    live: "https://katman-generation.github.io/CALCU_/"
   }
 ];
