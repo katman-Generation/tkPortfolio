@@ -53,7 +53,7 @@ export default function BuildingBlocks() {
 
   return (
 
-    <section className="bg-slate-950">
+    <section id="projects" className="bg-slate-950">
 
 
       {/* Section Heading */}

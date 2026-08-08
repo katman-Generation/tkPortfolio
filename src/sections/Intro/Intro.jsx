@@ -39,7 +39,7 @@ export default function Intro() {
               blur-[120px]
           "/>
           <nav
-                className="
+            className="
                 absolute
                 top-6
                 left-1/2
@@ -58,11 +58,28 @@ export default function Intro() {
                 uppercase
                 tracking-[0.3em]
                 text-white/70
-                "
+            "
             >
-                <span className="text-blue-400">My Story</span>
-                <span>Building Blocks</span>
-                <span>Contact</span>
+            <a
+                href="#about"
+                className="text-blue-400 transition hover:text-white"
+            >
+                My Story
+            </a>
+
+            <a
+                href="#projects"
+                className="transition hover:text-white"
+            >
+                Building Blocks
+            </a>
+
+            <a
+                href="#contact"
+                className="transition hover:text-white"
+            >
+                Contact
+            </a>
             </nav>
 
             <Space />
